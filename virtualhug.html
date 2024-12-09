@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Hug - Cute Cat Hug</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+    }
+
+    .message {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: #4b0082;
+    }
+
+    .hug-content {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: #fff;
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ff1493;
+    }
+  </style>
+  <!-- Include the canvas-confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Button to show content -->
+  <button class="button" id="showHugBtn">Yasin, click here</button>
+
+  <!-- Content that will appear after the button is clicked -->
+  <div class="hug-content" id="hugContent">
+    <div class="tenor-gif-embed" data-postid="25654460" data-share-method="host" data-aspect-ratio="1.25" data-width="100%">
+      <a href="https://tenor.com/view/cute-hug-gif-25654460">Cute Hug GIF</a> from <a href="https://tenor.com/search/cute-gifs">Cute GIFs</a>
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+    <div class="message">Here's a big hug from a cute cat! 🐱🤗</div>
+    <!-- Open note button -->
+    <button class="button" onclick="openNote()">Open note</button>
+  </div>
+
+  <script>
+    // Get references to the button and content
+    const showHugBtn = document.getElementById('showHugBtn');
+    const hugContent = document.getElementById('hugContent');
+
+    // Function to trigger the confetti effect
+    function triggerConfetti() {
+      confetti({
+        particleCount: 200,
+        spread: 60,
+        origin: { x: 0.5, y: 0.5 }
+      });
+    }
+
+    // Function to open a new window with the background GIF and note
+    function openNote() {
+      const newWindow = window.open('', '', 'width=800, height=600');
+      newWindow.document.write(`
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Note</title>
+          <style>
+            body {
+              background: url('https://media.giphy.com/media/3o6gbeVN2ZPbG2COKA/giphy.gif') no-repeat center center fixed;
+              background-size: cover;
+              font-family: Arial, sans-serif;
+              text-align: center;
+              color: white;
+              padding-top: 100px;
+            }
+            .note {
+              background-color: rgba(255, 255, 255, 0.7);
+              padding: 30px;
+              border-radius: 15px;
+              font-size: 22px;
+              display: inline-block;
+              max-width: 80%;
+              text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adding text shadow */
+              color: #4b0082; /* Ensures text contrasts well */
+            }
+          </style>
+        </head>
+        <body>
+          <div class="note">
+            Next time you don’t sleep, think of raccoon eyes and remember you are more cute without them. Elephant Juice <br><br>Mufti Harvey
+          </div>
+        </body>
+        </html>
+      `);
+    }
+
+    // Add event listener to the button
+    showHugBtn.addEventListener('click', function() {
+      // Show the content after the button is clicked
+      hugContent.style.display = 'block';
+      // Optionally hide the button after it's clicked
+      showHugBtn.style.display = 'none';
+      // Trigger confetti when the button is clicked
+      triggerConfetti();
+    });
+  </script>
+
+</body>
+</html>
